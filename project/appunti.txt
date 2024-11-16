@@ -1,0 +1,16 @@
+https://frazam.github.io/
+
+frazam.github.io
+io.github.frazam
+
+https://start.spring.io/
+
+git config --global user.email "francesco.zambon.padova@gmail.com"
+git config --global user.name "frazam"
+
+
+https://www.baeldung.com/java-streams
+
+http://localhost:8080/java-demo/api/stream/numbers?max=10
+http://localhost:8080/java-demo/api/stream/numbers/odds?max=10
+
