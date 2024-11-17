@@ -7,5 +7,5 @@ RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 # Stage 2: Run
 FROM docker.io/eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/target/java-demo-*.jar app.jar
+COPY --from=build /app/target/java-demo.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
