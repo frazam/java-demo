@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -45,4 +46,15 @@ public class ProductController {
 	public void deleteProduct(@PathVariable Long id) {
 		productService.deleteById(id);
 	}
+
+	@GetMapping("/price-range")
+	public List<Product> findProductsByPriceRange(@RequestParam double min, @RequestParam double max) {
+		return productService.findProductsByPriceRange(min, max);
+	}
+
+	@GetMapping("/start-with")
+	public List<Product> findProductsByPriceRange(@RequestParam String prefix) {
+		return productService.findProductsByNameStartsWith(prefix);
+	}
+
 }
