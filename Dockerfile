@@ -1,11 +1,11 @@
-# Build Stage
+# Stage 1: Build
 FROM docker.io/eclipse-temurin:21-jdk AS build
 WORKDIR /app
 COPY . .
-RUN ./mvnw clean package -DskipTests
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
-# Runtime Stage
-FROM docker.io/eclipse-temurin:21-jre-alpine
+# Stage 2: Run
+FROM docker.io/eclipse-temurin:21-jre-slim
 WORKDIR /app
-COPY --from=build /app/target/java-demo.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY --from=build /app/target/java-demo-*.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
