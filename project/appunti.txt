@@ -13,4 +13,8 @@ https://www.baeldung.com/java-streams
 
 http://localhost:8080/java-demo/api/stream/numbers?max=10
 http://localhost:8080/java-demo/api/stream/numbers/odds?max=10
+http://localhost:8080/java-demo/api/stream/numbers/even?max=10
+http://localhost:8080/java-demo/api/stream/numbers/count?max=10
+
+https://microk8s.io/
 
