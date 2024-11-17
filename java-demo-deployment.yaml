@@ -17,6 +17,7 @@ spec:
       containers:
       - name: java-demo
         image: localhost:32000/java-demo:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
 ---
