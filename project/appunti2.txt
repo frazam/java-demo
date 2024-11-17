@@ -1,0 +1,86 @@
+# installo le guest additions
+sudo apt install bzip2 build-essential gcc make perl dkms
+# monto il cd
+cd /media/cesco/VBox_GAs_7.1.4
+sudo ./VBoxLinuxAdditions.run 
+sudo reboot now
+
+# installo microk8s
+sudo snap install microk8s --classic
+
+sudo reboot now
+
+sudo usermod -aG microk8s $USER
+mkdir ~/.kube
+sudo chown -R $USER ~/.kube
+
+sudo reboot now
+
+microk8s enable dns hostpath-storage
+microk8s status
+
+sudo reboot now
+
+git clone https://github.com/frazam/java-demo.git
+microk8s enable registry
+
+
+sudo apt update
+sudo apt install maven
+mvn -v
+
+sudo apt update
+sudo apt install openjdk-17-jdk
+javac -version
+
+
+
+sudo apt update
+sudo apt install -y buildah
+
+buildah bud -t localhost:32000/java-demo:latest .
+buildah push localhost:32000/java-demo:latest docker-archive:java-demo.tar
+microk8s ctr --debug image import java-demo.tar
+microk8s ctr images list | grep java
+microk8s ctr images list | grep localhost:32000/java-demo:latest
+
+microk8s kubectl apply -f java-demo-deployment.yaml
+
+microk8s kubectl get pods
+microk8s kubectl get services
+
+/java-demo/api/stream/numbers?max=10
+
+microk8s kubectl port-forward service/java-demo 8080:80
+
+
+sudo apt install curl
+https://tailscale.com/kb/1476/install-ubuntu-2404
+
+curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/noble.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+
+sudo apt-get update
+sudo apt-get install tailscale
+
+sudo tailscale up
+
+
+microk8s kubectl port-forward service/java-demo 8080:80
+sudo tailscale funnel 8080
+
+
+
+
+microk8s status
+microk8s kubectl get services
+microk8s kubectl get pods
+microk8s kubectl get service java-demo
+
+
+python -m http.server 8091
+
+    
+ss -tln
+microk8s kubectl port-forward service/hello-world-service 8080:80
+sudo tailscale funnel 8080
