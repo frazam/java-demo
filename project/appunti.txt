@@ -18,3 +18,5 @@ http://localhost:8080/java-demo/api/stream/numbers/count?max=10
 
 https://microk8s.io/
 
+http://localhost:8080/java-demo/api/tutorial/cap02/method01
+

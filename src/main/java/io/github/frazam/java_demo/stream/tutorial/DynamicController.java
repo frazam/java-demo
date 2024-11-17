@@ -1,4 +1,4 @@
-package io.github.frazam.java_demo.stream_tutorial;
+package io.github.frazam.java_demo.stream.tutorial;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/tutorial")
+@RequestMapping("/api/stream/tutorial")
 public class DynamicController {
 
 	private final Map<String, Object> processors = new HashMap<>();

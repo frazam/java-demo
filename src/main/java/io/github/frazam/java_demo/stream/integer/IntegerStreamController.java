@@ -1,4 +1,4 @@
-package io.github.frazam.java_demo;
+package io.github.frazam.java_demo.stream.integer;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/stream")
+@RequestMapping("/api/stream/")
 public class IntegerStreamController {
 
 	@Autowired

@@ -1,4 +1,4 @@
-package io.github.frazam.java_demo.stream_tutorial;
+package io.github.frazam.java_demo.stream.tutorial;
 
 import org.springframework.stereotype.Component;
 

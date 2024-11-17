@@ -1,4 +1,4 @@
-package io.github.frazam.java_demo;
+package io.github.frazam.java_demo.stream.integer;
 
 import java.util.List;
 import java.util.stream.Collectors;
